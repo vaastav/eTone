@@ -1,0 +1,47 @@
+eTone Meeting Minutes 
+
+9 November 2017
+
+Bryan Gick
+Vaastav Anand 
+Jamie Polintan
+
+Regrets: Alexis Black
+
+
+Measure accuracy of tone
+
+Choose language at later date
+
+Pitch accuracy tool should be modular
+
+-Software should keep track of date and time of games as well as accuracy.
+    Should be collected and stored for experimenters. Later on possibly a leader board.
+
+-Should be able to handle one sentence-length of produced material.
+
+-Pitch tracker features: Filtering, use Log F0, Normal correlation after filtering.
+
+Future 
+
+
+Issues Ryan will discuss with eNunciate team: 
+-Where is eNunciate hosted?
+-Where is the previous coding done in Java
+-What license does eNunciate use?
+
+
+UI
+
+-Game should not demonstrate accuracy vertically or time horizontally. Closeness to target
+-Simple instructions and simple UI
+-"Levelling up:"
+  -Sylable -> word -> sentence -> challenging sentence
+  -Slow pronunciation -> fast pronunciation
+ -Initially one game that would appeal to a broad audience. Possibility of several "skins"?
+ 
+ 
+ Will not name app Tone-y-hone-y
+ Will not name app Tony
+
+Please add anything I forgot!
