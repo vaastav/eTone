@@ -1,0 +1,30 @@
+Nov 16 Meeting
+
+Present
+Vaastav
+Jamie
+Ryan
+Bryan
+
+Regrets: Alexis
+
+Game/UI
+-Rough prototyping
+-Game will be in unity. 
+-Jamie presented a cat-based fishing game. Accuracy of pronunciation is represented as cat's accuracy at catching fish.
+-Task should be analogous to the motor study.
+-Jamie will create a basic level
+-Work on passing off data from app to serveer
+-Voice input will be captured by Unity (is this true?)
+-Gradient accuracy is important. Perhaps the cat's timing in catching the fish or the distance of the leaping cat from the fish.
+-Would be best to have different skins. (I think we all agree space is cool). 
+-Open-source sprites are ok (I may have the terminology wrong here. Please correct it.)
+
+Linking game to registration and signal processing components
+-Registration and login will be in Jango.
+
+Signal processing
+-Vaastav has tried out different signal libraries, but requires target stimuli.
+
+Language instruction.
+-Ryan/Bryan will choose a language and find some target stimuli.
