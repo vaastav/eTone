@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
-from eTone.forms import SignupForm, UploadFileForm
+from eTone.forms import SignupForm, UploadFileForm, ToneSampleForm
 from django.http import HttpResponseRedirect
 from eTone.handlers import upload_file_handler
 
@@ -20,11 +20,12 @@ def signup(request):
 
 def upload_file(request):
     if request.method == 'POST':
-        if request.FILES['myfile']:
-            upload_file_handler(request.FILES['myfile'])
+        form = ToneSampleForm(request.POST, request.FILES)
+        if form.is_valid():
+            upload_file_handler(form.cleaned_data.get('f'))
             return redirect('home')
         else:
             print("Invalid form")
     else :
-        form = UploadFileForm()
+        form = ToneSampleForm()
     return render(request, 'upload.html', {'form': form})
