@@ -14,6 +14,4 @@ class SignupForm(UserCreationForm):
 
 class UploadFileForm(forms.Form):
     title = forms.CharField(max_length=50)
-    request_num = forms.IntegerField()
-    user_id = forms.IntegerField()
     uploaded_file = forms.FileField()

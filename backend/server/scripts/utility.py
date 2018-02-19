@@ -1,4 +1,4 @@
-from scipy import io
+import scipy.io.wavfile
 
 def read_wavfile(filename):
     """ Function to read the contents of a wav file
