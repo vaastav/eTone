@@ -22,9 +22,7 @@ def upload_file(request):
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
             # TODO call handler
-            print("Here")
             return HttpResponseRedirect('/success/url')
     else :
-        print("Initializing empty form") 
         form = UploadFileForm()
     return render(request, 'upload.html', {'form': form})
