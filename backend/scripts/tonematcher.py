@@ -3,18 +3,6 @@ import scipy.fftpack as sf
 import numpy as np
 import matplotlib.pyplot as plt
 
-def read_wavfile(filename):
-    """ Function to read the contents of a wav file
-
-    Args:
-        filename (str): Name of the wav file to be opened
-
-    Returns:
-        data (nd-array): Contents of a wav file
-    """
-    rate, data = scipy.io.wavfile.read(filename)
-    return data
-
 def plot_sounds(original, trial):
     """ Plot the sound waves for a visual comparison
 
