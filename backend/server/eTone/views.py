@@ -27,5 +27,5 @@ def upload_file(request):
         else:
             print("Invalid form")
     else :
-        form = ToneSampleForm()
+        form = ToneSampleForm(initial={'username' : request.user.username})
     return render(request, 'upload.html', {'form': form})
