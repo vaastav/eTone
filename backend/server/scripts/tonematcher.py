@@ -58,8 +58,8 @@ def pearson_correlation(target, trial):
         accuracy (double): The accuracy, between 0-100 of how close the reproduced sound is to the original sound
     """
     coeff_matrix = np.corrcoef(target, trial)
-    accuracy = 1 + coeff_matrix[0, 1]
-    return (accuracy / 2) * 100
+    accuracy = abs(coeff_matrix[0, 1])
+    return accuracy * 100
 
 def discrete_cosine_transform(vector):
     return sf.dct(vector, norm='ortho')
@@ -91,11 +91,44 @@ def match_tone(target, trial):
     print(len(target2))
     print(len(trial2))
     lag = np.argmax(ssig.correlate(target2, trial2))
-    print(lag)
     trial3 = np.roll(trial2, shift=int(np.ceil(lag+1)))
     plot_sounds3(target2, trial2, trial3)
-    return pearson_correlation(target2, trial3)
-    #return cosine_similarity(target2, trial2)
+    #return pearson_correlation(target2, trial3)
+    return cosine_similarity(target2, trial3)
+
+def match_tone2(target, trial):
+    target2 = discrete_cosine_transform(target)
+    trial2 = discrete_cosine_transform(trial)
+    target3 = target2
+    trial3 = trial2
+    if len(target2) < len(trial2):
+        lag = np.argmax(ssig.correlate(target2, trial2))
+        trial3 = np.roll(trial2, shift=int(np.ceil(lag+1)))
+        trial3 = trial3[:len(target2)]
+        #target3 = np.pad(target2, (0, len(trial2) - len(target2)), 'constant', constant_values=(0,0))
+    elif len(target2) > len(trial2):
+        lag = np.argmax(ssig.correlate(trial2, target2))
+        target3 = np.roll(target2, shift=int(np.ceil(lag+1)))
+        target3 = target3[:len(trial2)]
+        #trial3 = np.pad(trial2, (0, len(target2) - len(trial2)), 'constant', constant_values=(0,0))
+    else:
+        lag = np.argmax(ssig.correlate(target2, trial2))
+        trial3 = np.roll(trial2, shift=int(np.ceil(lag+1)))
+    print(len(target3))
+    print(len(trial3))
+    return cosine_similarity(target3, trial3)
+
+def match_tone3(target, trial):
+    M = min(len(target), len(trial))
+    spec1 = sf.rfft(target, n=M)
+    spec2 = sf.rfft(trial, n=M)
+    lag = np.argmax(ssig.correlate(spec1, spec2))
+    print(lag)
+    spec3 = np.roll(spec2, shift=int(np.ceil(lag+1)))
+    return cosine_similarity(spec1, spec3)
+
+def getFrequencies(v, sampling_rate):
+    
 
 def maxFrequency(X, F_sample, Low_cutoff=80, High_cutoff= 300):
     """ Searching presence of frequencies on a real signal using FFT
@@ -113,17 +146,23 @@ def maxFrequency(X, F_sample, Low_cutoff=80, High_cutoff= 300):
 
     #Convert cutoff frequencies into points on spectrum
     [Low_point, High_point] = map(lambda F: F/F_sample * M, [Low_cutoff, High_cutoff])
-
-    maximumFrequency = np.where(Spectrum == np.max(Spectrum[Low_point : High_point])) # Calculating which frequency has max power.
-
+    print(Low_point)
+    print(High_point)
+    print(Spectrum)
+    #maximumFrequency = np.where(Spectrum == np.max(Spectrum[Low_point : High_point])) # Calculating which frequency has max power.
+    maximumFrequency = 0
     return maximumFrequency
 
 def main():
     rate1, data1 = read_wavfile("../../sounds/yoruba/mid_low_high_low_3.wav")
-    rate2, data2 = read_wavfile("../../sounds/yoruba/mid_low_high_low_2.wav")
+    rate2, data2 = read_wavfile("../../sounds/yoruba/mid_low_high_low.wav")
     print(len(data1))
     print(len(data2))
     print(match_tone(data1, data2))
+    print(match_tone2(data1, data2))
+    print(match_tone3(data1, data2))
+    print(maxFrequency(data1, rate1))
+    print(maxFrequency(data2, rate2))
 
 if __name__ == '__main__':
     main()
