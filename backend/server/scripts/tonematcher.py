@@ -4,7 +4,7 @@ import scipy.spatial as ssp
 import scipy.signal as ssig
 import numpy as np
 import matplotlib.pyplot as plt
-from utility import read_wavfile
+#from utility import read_wavfile
 from math import pow, log2
 
 
@@ -59,7 +59,7 @@ def pearson_correlation(target, trial):
     """
     coeff_matrix = np.corrcoef(target, trial)
     accuracy = abs(coeff_matrix[0, 1])
-    return accuracy * 100
+    return 100 * (1 + accuracy) / 2
 
 def discrete_cosine_transform(vector):
     return sf.dct(vector, norm='ortho')
@@ -93,8 +93,8 @@ def match_tone(target, trial):
     lag = np.argmax(ssig.correlate(target2, trial2))
     trial3 = np.roll(trial2, shift=int(np.ceil(lag+1)))
     plot_sounds3(target2, trial2, trial3)
-    #return pearson_correlation(target2, trial3)
-    return cosine_similarity(target2, trial3)
+    return pearson_correlation(target2, trial3)
+    #return cosine_similarity(target2, trial3)
 
 def match_tone2(target, trial):
     target2 = discrete_cosine_transform(target)
@@ -125,10 +125,7 @@ def match_tone3(target, trial):
     lag = np.argmax(ssig.correlate(spec1, spec2))
     print(lag)
     spec3 = np.roll(spec2, shift=int(np.ceil(lag+1)))
-    return cosine_similarity(spec1, spec3)
-
-def getFrequencies(v, sampling_rate):
-    
+    return cosine_similarity(spec1, spec3) 
 
 def maxFrequency(X, F_sample, Low_cutoff=80, High_cutoff= 300):
     """ Searching presence of frequencies on a real signal using FFT
@@ -153,7 +150,7 @@ def maxFrequency(X, F_sample, Low_cutoff=80, High_cutoff= 300):
     maximumFrequency = 0
     return maximumFrequency
 
-def main():
+''' def main():
     rate1, data1 = read_wavfile("../../sounds/yoruba/mid_low_high_low_3.wav")
     rate2, data2 = read_wavfile("../../sounds/yoruba/mid_low_high_low.wav")
     print(len(data1))
@@ -165,4 +162,4 @@ def main():
     print(maxFrequency(data2, rate2))
 
 if __name__ == '__main__':
-    main()
+    main() '''
