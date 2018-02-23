@@ -1,10 +1,10 @@
-{% extends base.html %}
+{% extends 'base.html' %}
 
 {% block content %}
 <h2>Play eTone</h2>
 {% if request.user.is_authenticated %}
     <audio controls>
-        <source src="" type="audio/wav">
+        <source src="{{ sound.audio_file.url }}" type="audio/wav">
     </audio>
 {% else %}
 <p> Please <a href="{% url 'login' %}">login</a></p>

@@ -3,6 +3,9 @@ from django.contrib.auth import login, authenticate
 from eTone.forms import SignupForm, UploadFileForm, ToneSampleForm
 from django.http import HttpResponseRedirect, JsonResponse
 from eTone.handlers import upload_file_handler
+from scripts.utility import get_tone_link, get_num_links
+from eTone.models import Sound
+import random
 
 def signup(request):
     if request.method == 'POST':
@@ -29,3 +32,10 @@ def upload_file(request):
     else :
         form = ToneSampleForm(initial={'username' : request.user.username})
     return render(request, 'upload.html', {'form': form})
+
+def select_sound_game(request):
+    num = random.randint(1, get_num_links())
+    song_address = get_tone_link(num)
+    sound = Sound(name="blah", type_id=num, audio_file=song_address)
+    sound.save()
+    return render(request, 'game.html', {'sound': sound})
