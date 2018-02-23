@@ -3,9 +3,14 @@
 {% block content %}
 <h2>Play eTone</h2>
 {% if request.user.is_authenticated %}
-    <audio controls>
-        <source src="{{ sound.audio_file.url }}" type="audio/wav">
-    </audio>
+    <div>
+        <audio controls>
+            <source src="{{ sound.audio_file.url }}" type="audio/wav">
+        </audio>
+    </div>
+    <div>
+            <input type="file" accept="audio/*;capture=microphone" id="recorder">
+    </div>
 {% else %}
 <p> Please <a href="{% url 'login' %}">login</a></p>
 {% endif %}

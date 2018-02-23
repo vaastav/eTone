@@ -3,6 +3,12 @@
 {% block content %}
   <h2>File Upload</h2>
   {% if request.user.is_authenticated %}
+  <div>
+        <audio controls>
+            <source src="{{ sound.audio_file.url }}" type="audio/wav">
+        </audio>
+  </div>
+  <div>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {% for field in form %}
@@ -19,6 +25,7 @@
     {% endfor %}
     <button type="submit">Upload</button>
   </form>
+  </div>
   {% else %}
   <p> Please <a href="{% url 'login' %}">login</a></p>
   {% endif %}

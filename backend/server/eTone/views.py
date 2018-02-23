@@ -30,8 +30,12 @@ def upload_file(request):
         else:
             print("Invalid form")
     else :
-        form = ToneSampleForm(initial={'username' : request.user.username})
-    return render(request, 'upload.html', {'form': form})
+        num = random.randint(1, get_num_links())
+        song_address = get_tone_link(num)
+        sound = Sound(name="blah", type_id=num, audio_file=song_address)
+        sound.save()
+        form = ToneSampleForm(initial={'username' : request.user.username, 'type_id' : num})
+    return render(request, 'upload.html', {'form': form, 'sound': sound})
 
 def select_sound_game(request):
     num = random.randint(1, get_num_links())
