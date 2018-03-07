@@ -9,18 +9,12 @@ namespace Assets.Scripts
 
     /*Enums for the slingshot, the state of the game, and the agent.*/
 
-
-    public enum SlingshotState
-    {
-        Idle,
-        VoiceInput,
-        AgentFlying
-    }
-
     public enum GameState
     {
         Start,
-        Playing
+        Playing,
+	GameOver,
+	Won
     }
 
     public enum AgentState
