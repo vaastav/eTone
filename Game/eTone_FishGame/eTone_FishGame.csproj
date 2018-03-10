@@ -292,12 +292,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AccuracyPlaceholder.cs" />
-    <Compile Include="Assets\Scripts\Agent.cs" />
     <Compile Include="Assets\Scripts\Enums.cs" />
     <Compile Include="Assets\Scripts\FollowCamera.cs" />
-    <Compile Include="Assets\Scripts\Payload.cs" />
-    <Compile Include="Assets\Scripts\VoiceMove.cs" />
+    <Compile Include="Assets\Scripts\MicrophoneTest.cs" />
+    <Compile Include="Assets\Scripts\SavWav.cs" />
     <Compile Include="Assets\Scripts\VoiceMoveRawVer.cs" />
+    <Compile Include="Assets\Scripts\VoicePrompt.cs" />
     <Compile Include="Assets\Scripts\Water Scripts\WaterPhysics.cs" />
     <Compile Include="Assets\UI\Simple UI\Samples\IconPreview.cs" />
     <Compile Include="Assets\UI\UIController\Scripts\UIController.cs" />

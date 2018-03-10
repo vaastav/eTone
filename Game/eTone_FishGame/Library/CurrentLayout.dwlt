@@ -45,7 +45,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 135
+  controlID: 123
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -91,8 +91,8 @@ MonoBehaviour:
     y: 0
     width: 218
     height: 404
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 82
+  controlID: 78
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 58
+  controlID: 54
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -466,19 +466,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 84
   m_LastFolders:
-  - Assets
+  - Assets/Scripts
   m_LastFoldersGridSize: 84
-  m_LastProjectPath: C:\Users\Jamie\OneDrive\Unity\eTone_FishGame
+  m_LastProjectPath: C:\Users\Jamie\UBC\eTone\Game\eTone_FishGame
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 5a290000
-    m_LastClickedID: 10586
-    m_ExpandedIDs: 000000005a2900005a2a0000c62a0000c42b0000702d00008e2d0000442e0000962f00009c2f0000a22f0000a42f0000b4320000b6320000b8320000ba320000bc320000c0320000c2320000c4320000c6320000c8320000ca320000cc320000ce320000d0320000d2320000d4320000d6320000d8320000047b000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 71}
+    m_SelectedIDs: 042e0000
+    m_LastClickedID: 11780
+    m_ExpandedIDs: 000000007e290000722a0000d42a00004c2d0000662d0000102e0000262f0000302f00005e31000060310000623100006431000066310000683100006a3100006c3100006e31000070310000723100007431000076310000783100007a3100007c3100007e310000803100008231000084310000863100008831000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -506,7 +506,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000005a290000c62a0000b82b0000702d00008e2d0000222e0000782f0000a42f0000b4320000b6320000b8320000ba320000bc320000be320000c0320000c2320000c4320000c6320000c8320000ca320000cc320000ce320000d0320000d2320000d4320000d6320000d8320000
+    m_ExpandedIDs: 000000007e290000722a0000d42a00004c2d0000662d0000102e0000262f0000302f00005e31000060310000623100006431000066310000683100006a3100006c3100006e31000070310000723100007431000076310000783100007a3100007c3100007e3100008031000082310000843100008631000088310000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -550,7 +550,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 5}
+      m_ClientGUIView: {fileID: 0}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -558,7 +558,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 0}
+    m_ScrollPosition: {x: 0, y: 34}
     m_GridSize: 84
   m_DirectoriesAreaWidth: 225
 --- !u!114 &17
@@ -624,23 +624,23 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
-    m_LastClickedID: 0
-    m_ExpandedIDs: c616f7ffd016f7ffd64df9ff3415fdffe029fdff642afdffb22cfdff26fbfdff6c52fefff652feff4455feffc664feff4a65feff9867feff7cb3feff04b4feff52b6feff04c2feffacc2fefffac4feffaad1feff2ed2feff7ad4feff3025fffff625ffff4428ffff98fbffff9cfbffff9efbffff000000005a670000
+    m_SelectedIDs: ea2f0000
+    m_LastClickedID: 12266
+    m_ExpandedIDs: 94fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Main Camera
-      m_OriginalName: Main Camera
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: -191190
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 4}
     m_SearchString: 
@@ -710,7 +710,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.15217727, y: -0.6975809, z: 0.15547778, w: 0.6826786}
     speed: 2
-    m_Value: {x: 0.15217726, y: -0.6975808, z: 0.15547776, w: 0.6826785}
+    m_Value: {x: -0.15217727, y: 0.6975809, z: -0.15547778, w: -0.6826786}
   m_Size:
     m_Target: 22
     speed: 2
