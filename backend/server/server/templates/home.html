@@ -4,5 +4,14 @@
 
 {% block content %}
     <h2>Home</h2>
-    <a href="/upload">Play game</a> 
+    {% if request.user.is_authenticated %}
+    <div>
+    <a href="/upload">Play game</a>
+    </div>
+    <div>
+    <a href="/stats">View stats</a> 
+    </div>
+    {% else %}
+    <p> Please <a href="{% url 'login' %}">login</a></p>
+    {% endif %}
 {% endblock %}

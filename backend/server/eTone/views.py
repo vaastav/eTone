@@ -48,6 +48,6 @@ def select_sound_game(request):
     return render(request, 'game.html', {'sound': sound})
 
 def get_stats(request):
-    average_obj = Score.objects.all().aggregate(Avg('score'))
+    average_obj = Score.objects.all().filter(username__iexact=request.user.username).aggregate(Avg('score'))
     average = average_obj['score__avg']
     return render(request, 'stats.html', {'average': average})
