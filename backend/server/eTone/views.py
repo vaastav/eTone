@@ -4,7 +4,8 @@ from eTone.forms import SignupForm, UploadFileForm, ToneSampleForm
 from django.http import HttpResponseRedirect, JsonResponse
 from eTone.handlers import upload_file_handler
 from scripts.utility import get_tone_link, get_num_links
-from eTone.models import Sound
+from eTone.models import Sound, Score
+from django.db.models import Avg
 import random
 
 def signup(request):
@@ -25,7 +26,9 @@ def upload_file(request):
     if request.method == 'POST':
         form = ToneSampleForm(request.POST, request.FILES)
         if form.is_valid():
-            accuracy = upload_file_handler(form.cleaned_data.get('f'))
+            accuracy = upload_file_handler(form.cleaned_data.get('f'), form.cleaned_data.get('type_id'))
+            score = Score(username=request.user.username, score=accuracy)
+            score.save()
             return JsonResponse({'accuracy' : accuracy})
         else:
             print("Invalid form")
@@ -43,3 +46,8 @@ def select_sound_game(request):
     sound = Sound(name="blah", type_id=num, audio_file=song_address)
     sound.save()
     return render(request, 'game.html', {'sound': sound})
+
+def get_stats(request):
+    average_obj = Score.objects.all().aggregate(Avg('score'))
+    average = average_obj['score__avg']
+    return render(request, 'stats.html', {'average': average})

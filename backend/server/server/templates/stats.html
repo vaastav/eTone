@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2> Stats </h2>
+{% if request.user.is_authenticated %}
+    <p>Average Accuracy : {{ average }}</p>
+{% else %}
+<p> Please <a href="{% url 'login' %}">login</a></p>
+{% endif %}
+
+{% endblock %}
