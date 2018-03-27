@@ -6,7 +6,26 @@ from eTone.handlers import upload_file_handler
 from scripts.utility import get_tone_link, get_num_links
 from eTone.models import Sound, Score
 from django.db.models import Avg
+from rest_framework.views import APIView
+from rest_framework.parsers import FileUploadParser
+from rest_framework.permissions import AllowAny
 import random
+
+class FileUploadView(APIView):
+    permission_classes = (AllowAny,)
+    parser_classes = (FileUploadParser,)
+    
+    def put(self, request, filename, format=None):
+        file_obj = request.data['file']
+        print("here")
+
+        return JsonResponse({'accuracy' : 55.5})
+
+    def post(self, request, filename, typeID, format=None):
+        file_obj = request.FILES['file']
+        print(typeID)
+
+        return JsonResponse({'accuracy' : 66.6})
 
 def signup(request):
     if request.method == 'POST':

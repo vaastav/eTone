@@ -14,7 +14,8 @@ urlpatterns = [
     url(r'^signup/$', eTone_views.signup, name='signup'),
     url(r'^upload/$', eTone_views.upload_file, name='upload'),
     url(r'^game/$', eTone_views.select_sound_game, name='game'),
-    url(r'^stats/$', eTone_views.get_stats, name='stats')
+    url(r'^stats/$', eTone_views.get_stats, name='stats'),
+    url(r'^api/upload/(?P<typeID>[^/]?)/(?P<filename>[^/]+)$', eTone_views.FileUploadView.as_view())
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
