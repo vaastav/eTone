@@ -22,10 +22,12 @@ class FileUploadView(APIView):
         return JsonResponse({'accuracy' : 55.5})
 
     def post(self, request, filename, typeID, format=None):
-        file_obj = request.FILES['file']
+        file_obj = request.data['file']
+        accuracy = upload_file_handler(file_obj, int(typeID))
+        #accuracy = 55.5
         print(typeID)
 
-        return JsonResponse({'accuracy' : 66.6})
+        return JsonResponse({'accuracy' : accuracy})
 
 def signup(request):
     if request.method == 'POST':
