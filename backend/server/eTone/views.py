@@ -15,13 +15,15 @@ class FileUploadView(APIView):
     permission_classes = (AllowAny,)
     parser_classes = (FileUploadParser,)
     
-    def put(self, request, filename, format=None):
+    def put(self, request, filename, typeID, format=None):
+        print(request.data)
         file_obj = request.data['file']
         print("here")
 
         return JsonResponse({'accuracy' : 55.5})
 
     def post(self, request, filename, typeID, format=None):
+        print(request.data)
         file_obj = request.data['file']
         accuracy = upload_file_handler(file_obj, int(typeID))
         #accuracy = 55.5

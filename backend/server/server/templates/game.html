@@ -8,9 +8,14 @@
             <source src="{{ sound.audio_file.url }}" type="audio/wav">
         </audio>
     </div>
-    <div>
-            <input type="file" accept="audio/*;capture=microphone" id="recorder">
-    </div>
+    <div id="viz">
+		<canvas id="analyser" width="500" height="500"></canvas>
+		<canvas id="wavedisplay" width="500" height="500"></canvas>
+	</div>
+	<div id="controls">
+		<img id="record" src="/media/mic128.png" onclick="toggleRecording(this);">
+		<a id="save" href="#"><img src="/media/save.svg"></a>
+	</div>
 {% else %}
 <p> Please <a href="{% url 'login' %}">login</a></p>
 {% endif %}
