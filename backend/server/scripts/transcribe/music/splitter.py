@@ -2,9 +2,8 @@ from collections import OrderedDict
 import numpy
 from pydub import AudioSegment
 from pydub.utils import get_array_type
-from .notemap import notemap
+from .notemap import notemap, notearr
 import os
-
 
 class SongSplitter(object):
     def __init__(self,
@@ -14,8 +13,7 @@ class SongSplitter(object):
                  ms_increment=100):
         self.filename = os.path.splitext(os.path.basename(path))[0]
         sound = AudioSegment.from_file(file=path,
-                                       format=path.split(
-                                           '.')[1]).set_channels(1)
+                                       format="wav").set_channels(1)
         self.sound_raw = numpy.frombuffer(
                 sound._data,
                 dtype=get_array_type(
@@ -60,3 +58,20 @@ class SongSplitter(object):
                             notemap.values())) - pitch).argmin()]
         self.plotter.plot_transcription_result(
                 self.filename, data, notemap)
+
+    def get_transcription(self):
+        if not self.pitch_detector or not self.plotter:
+            raise ValueError('Call set_pitch_detector and set_plotter')
+        data = OrderedDict()
+        for sound_chunk, tstamp in self._iterate():
+            pitch = self.pitch_detector.get_pitch(
+                    sound_chunk, self.sample_rate)
+            if pitch != -1:
+                data[tstamp] = list(notemap.keys())[
+                        numpy.abs(numpy.array(list(
+                            notemap.values())) - pitch).argmin()]
+        return data
+
+
+def get_node_distance(n1, n2):
+    return int(abs(notearr.index(n1) - notearr.index(n2)))
