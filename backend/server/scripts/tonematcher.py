@@ -138,7 +138,7 @@ def match_tone4(target, trial):
     target_arr = convert_dict_to_array(target)
     trial_arr = convert_dict_to_array(trial)
     penalty = compare_transcription(target_arr, trial_arr)
-    return 100 - penalty * 5
+    return max(0, 100 - penalty)
 
 def maxFrequency(X, F_sample, Low_cutoff=80, High_cutoff= 300):
     """ Searching presence of frequencies on a real signal using FFT

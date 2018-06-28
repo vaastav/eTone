@@ -7,7 +7,7 @@ from .transcribe.pitch import Mpm
 from .transcribe.plot import Plotter
 import itertools
 
-tones_dict = {1 : 'Tone_Series_1', 2 : 'Tone_Series_2', 3 : 'mid_mid_mid_mid', 4 : 'mid_low_high_low', 5 : 'mid_high_mid_high', 6 : 'high_mid_low_low_mid_mid', 7 : 'high_mid_low_low_low_mid_low_low'}
+tones_dict = {1 : 'Tone_Series_1', 2 : 'Tone_Series_2', 3 : 'mid_mid_mid_mid', 4 : 'mid_low_high_low', 5 : 'mid_high_mid_high', 6 : 'high_mid_low_low_mid_mid', 7 : 'high_mid_low_low_low_mid_low_low', 8: 'gogo-straight'}
 
 def read_wavfile(filename):
     """ Function to read the contents of a wav file
