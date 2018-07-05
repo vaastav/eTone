@@ -2,7 +2,7 @@ import scipy.io.wavfile
 from django.conf import settings
 import os
 from .transcribe.music import SongSplitter
-from .transcribe.music.splitter import get_node_distance
+from .transcribe.music.splitter import get_node_distance, is_human_pitch
 from .transcribe.pitch import Mpm
 from .transcribe.plot import Plotter
 import itertools
@@ -35,7 +35,8 @@ def write_wavfile(filename, rate, data):
 def convert_dict_to_array(d):
     array = []
     for k, v in d.items():
-        array += [v]
+        if is_human_pitch(v):
+            array += [v]
     return array
 
 def compare_transcription(t1, t2):

@@ -110,7 +110,7 @@ notemap = {
 }
 
 notearr = [
-   "C0",
+  "C0",
   "C#0",
   "D0",
   "Eb0",
@@ -219,3 +219,6 @@ notearr = [
   "Bb8",
   "B8" 
 ]
+
+Human_Upper_Bound = "C5"
+Human_Lower_Bound = "B1"

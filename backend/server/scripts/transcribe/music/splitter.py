@@ -2,7 +2,7 @@ from collections import OrderedDict
 import numpy
 from pydub import AudioSegment
 from pydub.utils import get_array_type
-from .notemap import notemap, notearr
+from .notemap import notemap, notearr, Human_Lower_Bound, Human_Upper_Bound
 import os
 
 class SongSplitter(object):
@@ -75,3 +75,6 @@ class SongSplitter(object):
 
 def get_node_distance(n1, n2):
     return int(abs(notearr.index(n1) - notearr.index(n2)))
+
+def is_human_pitch(n):
+    return notearr.index(n) > notearr.index(Human_Lower_Bound) and notearr.index(n) < notearr.index(Human_Upper_Bound)
