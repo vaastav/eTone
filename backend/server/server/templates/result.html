@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Result</h2>
+{% if request.user.is_authenticated %}
+
+<div>
+    <h2>Accuracy</h2>
+    <h3>{{ accuracy }}</h3>
+</div>
+
+<div>
+    <h2> Target </h2>
+    <img src="{{ target }}">
+</div>
+
+<div>
+    <h2> Trial </h2>
+    <img src="{{ trial }}">
+</div>
+
+{% else %}
+<p> Please <a href="{% url 'login' %}">login</a></p>
+{% endif %}
+
+{% endblock %}
