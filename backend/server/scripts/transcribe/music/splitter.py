@@ -53,9 +53,11 @@ class SongSplitter(object):
             pitch = self.pitch_detector.get_pitch(
                     sound_chunk, self.sample_rate)
             if pitch != -1:
-                data[tstamp] = list(notemap.keys())[
+                key = list(notemap.keys())[
                         numpy.abs(numpy.array(list(
                             notemap.values())) - pitch).argmin()]
+                if is_human_pitch(key):
+                    data[tstamp] = key
         self.plotter.plot_transcription_result(
                 self.filename, data, notemap)
 

@@ -20,4 +20,4 @@ def upload_file_handler(f, id=1):
         accuracy = match_tone4(target, trial) 
     finally:
         os.remove(path)
-    return accuracy
+    return accuracy, filename, path

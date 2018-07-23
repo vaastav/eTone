@@ -14,11 +14,11 @@ class Plotter(object):
         timestamps, notes = zip(*items)
         pitches = [all_notes[x] for x in notes]
         matplotlib.pyplot.figure()
-        matplotlib.pyplot.scatter(timestamps, pitches)
+        matplotlib.pyplot.plot(timestamps, pitches, '-o')
         matplotlib.pyplot.yticks(pitches, notes)
         matplotlib.pyplot.title(os.path.basename(
             os.path.normpath(name)), **self.font)
         matplotlib.pyplot.xlabel('time (ms)', **self.font)
         matplotlib.pyplot.ylabel('note', rotation=0, labelpad=15, **self.font)
         matplotlib.pylab.savefig(
-                '{0}-{1}.png'.format(name, time.strftime('%y%m%d%H%M%S')))
+                '{0}.png'.format('static/trials/' + name))

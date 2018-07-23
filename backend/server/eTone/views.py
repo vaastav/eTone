@@ -10,6 +10,8 @@ from rest_framework.views import APIView
 from rest_framework.parsers import FileUploadParser
 from rest_framework.permissions import AllowAny
 import random
+import os
+
 
 class FileUploadView(APIView):
     permission_classes = (AllowAny,)
@@ -67,10 +69,12 @@ def select_sound_game(request):
     if request.method == 'POST':
         form = ToneSampleForm(request.POST, request.FILES)
         if form.is_valid():
-            accuracy = upload_file_handler(form.cleaned_data.get('f'), form.cleaned_data.get('type_id'))
+            accuracy, target, trial = upload_file_handler(form.cleaned_data.get('f'), form.cleaned_data.get('type_id'))
             score = Score(username=request.user.username, score=accuracy)
             score.save()
-            return JsonResponse({'accuracy' : accuracy})
+            print(target)
+            print(trial)
+            return render(request, 'result.html', {'accuracy': accuracy, 'target': '/media/trials/' + os.path.splitext(os.path.basename(target))[0] + '.png', 'trial': '/media/trials/' + os.path.splitext(os.path.basename(trial))[0] + '.png'})
         else:
             print("Invalid form")
     else :

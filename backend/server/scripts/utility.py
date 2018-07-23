@@ -37,6 +37,8 @@ def convert_dict_to_array(d):
     for k, v in d.items():
         if is_human_pitch(v):
             array += [v]
+        else:
+            print("Encountered non-human pitch")
     return array
 
 def compare_transcription(t1, t2):
