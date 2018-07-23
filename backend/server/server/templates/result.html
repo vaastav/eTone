@@ -6,7 +6,16 @@
 
 <div>
     <h2>Accuracy</h2>
-    <h3>{{ accuracy }}</h3>
+    {% if accuracy >= 80 %}
+    <img src="/media/animations/excellent.gif" style="width:500px">
+    {% elif accuracy >= 60 and accuracy < 80%}
+    <img src="/media/animations/good.gif" style="width:500px">
+    {% else %}
+    <img src="/media/animations/bad.gif" style="width:500px">
+    {% endif %}
+    <div>
+            <a href="/game">Play again</a>
+    </div>
 </div>
 
 <div>
