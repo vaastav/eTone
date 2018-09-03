@@ -1,27 +1,48 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Assets.Scripts
 {
+    //enums for state of game, and state of agent
 
-
-    /*Enums for the slingshot, the state of the game, and the agent.*/
 
     public enum GameState
     {
-        Start,
+        Preload,
+        Play,
+        MainMenu,
+        Intermediary,
         Playing,
-	GameOver,
-	Won
+        Finished
+    }
+
+    public enum LauncherState
+    {
+        Idle,
+        End,
+        Launch
+    }
+
+    public enum PayloadState
+    {
+        Uncaptured, 
+        Captured
     }
 
     public enum AgentState
     {
-        BeforeThrown,
-        Thrown,
+        Idle,
+        Jumping,
         Landed
     }
-}
 
+    public enum MenuState
+    {
+        MainMenu,
+        Pause,
+        Settings
+    }
+
+}

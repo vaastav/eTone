@@ -4,9 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Fire
-  - AccuracyRing
   - Water
+  - Agent
+  - Island
+  - Cloud
+  - Payload
+  - VoicePrompt
+  - EndCard
   layers:
   - Default
   - TransparentFX
@@ -43,4 +47,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BG
+    uniqueID: 938628551
     locked: 0

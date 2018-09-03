@@ -10,17 +10,17 @@ public class AccuracyPlaceholder : MonoBehaviour {
 
     //public VoiceMove vm;
 
-    public VoiceMoveRawVer vm;
-
+    public BackendManager bm;
 
 	// Use this for initialization
 	void Start () {
         accuracyBar = GameObject.Find("Slider").GetComponent<Slider>();
-	}
+        bm = FindObjectOfType<BackendManager>();
+    }
 	
     public void SetAcc()
     {
-        vm.Acc = accuracyBar.value;
-        Debug.Log("Set the accuracy to " + vm.Acc.ToString());
+        bm.Accuracy = accuracyBar.value;
+
     }
 }

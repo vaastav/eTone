@@ -2,44 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class VoicePrompt : MonoBehaviour {
-    /* The voice playback of the default, native speaker's phrase. */
 
-    private AudioSource voice;
+    public AudioSource audSource;
 
-    private float timeToPlay = 5;
+    public AudioClip clip;
 
-    private float timePassed = 0;
-
-    private float End = 0;
-
-
+    public GameManager gm;
 	// Use this for initialization
 	void Start () {
+        gm = FindObjectOfType<GameManager>();
 
-        voice = GetComponent<AudioSource>();
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
-        timePassed += Time.deltaTime;
-       
-
-        if (timePassed >= timeToPlay && End == 0)
+		if (audSource == null)
         {
-            
-            timePassed = 0;
-            voice.Play();
-            End++;
+            audSource = FindObjectOfType<AudioSource>();
         }
 
-        if (Input.GetKeyDown("p") && timePassed > timeToPlay)
-        {
-            voice.Play();
-        }
-        
+        BeginVoicePrompt();
 	}
+
+
+    void BeginVoicePrompt()
+    {
+        StartCoroutine(gm.ChangeActiveAfter(3, gameObject, true));
+
+        audSource.Play();
+
+        StartCoroutine(gm.ChangeActiveAfter(2, gameObject, false));
+    }
+
+    // Update is called once per frame
+    void Update () {
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            BeginVoicePrompt();
+        }
+    }
 }
