@@ -5,6 +5,7 @@ import scipy.signal as ssig
 import numpy as np
 import matplotlib.pyplot as plt
 #from utility import read_wavfile
+from .utility import convert_dict_to_array, compare_transcription
 from math import pow, log2
 
 
@@ -126,6 +127,18 @@ def match_tone3(target, trial):
     print(lag)
     spec3 = np.roll(spec2, shift=int(np.ceil(lag+1)))
     return cosine_similarity(spec1, spec3) 
+
+def match_tone4(target, trial):
+    """ Matches tone based on pitch transcriptions
+
+    Args:
+        target : Ordered Dict, transcription of the target file
+        trial  : Ordered Dict, transcription of the trial file
+    """
+    target_arr = convert_dict_to_array(target)
+    trial_arr = convert_dict_to_array(trial)
+    penalty = compare_transcription(target_arr, trial_arr)
+    return max(0, 100 - penalty)
 
 def maxFrequency(X, F_sample, Low_cutoff=80, High_cutoff= 300):
     """ Searching presence of frequencies on a real signal using FFT

@@ -8,8 +8,30 @@
             <source src="{{ sound.audio_file.url }}" type="audio/wav">
         </audio>
     </div>
+    <div id="viz">
+		<canvas id="wavedisplay" width="200" height="200"></canvas>
+	</div>
+	<div id="controls">
+		<img id="record" src="/media/mic128.png" onclick="toggleRecording(this);">
+		<a id="save" href="#"><img src="/media/save.svg"></a>
+    </div>
     <div>
-            <input type="file" accept="audio/*;capture=microphone" id="recorder">
+            <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              {% for field in form %}
+              <p>
+                  {{ field.label_tag }} <br>
+                  {{ field }}
+                  {% if field.help_text %}
+                      <small style="color: grey">{{ field.help_text }}</small>
+                  {% endif %}
+                  {% for error in field.errors %}
+                      <p style="color: red">{{ error }}</p>
+                  {% endfor %}
+              </p>
+              {% endfor %}
+              <button type="submit">Upload</button>
+            </form>
     </div>
 {% else %}
 <p> Please <a href="{% url 'login' %}">login</a></p>

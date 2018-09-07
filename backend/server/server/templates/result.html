@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Result</h2>
+{% if request.user.is_authenticated %}
+
+<div>
+    <h2>Accuracy</h2>
+    {% if accuracy >= 80 %}
+    <img src="/media/animations/excellent.gif" style="width:500px">
+    {% elif accuracy >= 60 and accuracy < 80%}
+    <img src="/media/animations/good.gif" style="width:500px">
+    {% else %}
+    <img src="/media/animations/bad.gif" style="width:500px">
+    {% endif %}
+    <div>
+            <a href="/game">Play again</a>
+    </div>
+</div>
+
+<div>
+    <h2> Target </h2>
+    <img src="{{ target }}">
+</div>
+
+<div>
+    <h2> Trial </h2>
+    <img src="{{ trial }}">
+</div>
+
+{% else %}
+<p> Please <a href="{% url 'login' %}">login</a></p>
+{% endif %}
+
+{% endblock %}
