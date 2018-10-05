@@ -74,7 +74,7 @@ def select_sound_game(request):
             score.save()
             print(target)
             print(trial)
-            return render(request, 'result.html', {'accuracy': accuracy, 'target': '/media/trials/' + os.path.splitext(os.path.basename(target))[0] + '.png', 'trial': '/media/trials/' + os.path.splitext(os.path.basename(trial))[0] + '.png'})
+            return render(request, 'result.html', {'acc + os.path.splitext(os.path.basename(target))[0] + '.png', 'trial': '/media/trials/' + os.path.splitext(os.path.basename(trial))[0] + '.png'})
         else:
             print("Invalid form")
     else :
